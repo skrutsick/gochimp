@@ -6,17 +6,17 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/RichardKnop/go-mailchimp/status"
+	"github.com/dinosaurcop/go-mailchimp/status"
 )
 
 // UpdateSubscription ...
-func (c *Client) UpdateSubscription(listID string, email string, mergeFields map[string]interface{}) (*MemberResponse, error) {
+func (c *Client) UpdateSubscription(listID, status, email string, mergeFields map[string]interface{}) (*MemberResponse, error) {
 	// Hash email
 	emailMD5 := fmt.Sprintf("%x", md5.Sum([]byte(email)))
 	// Make request
 	params := map[string]interface{}{
 		"email_address": email,
-		"status":        status.Subscribed,
+		"status":        status,
 		"merge_fields":  mergeFields,
 	}
 	resp, err := c.do(
