@@ -5,14 +5,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-
-	"github.com/vizzlo/gochimp/status"
 )
 
 func (c *Client) Unsubscribe(listID, email string) (*MemberResponse, error) {
 	emailMD5 := fmt.Sprintf("%x", md5.Sum([]byte(email)))
 	params := map[string]interface{}{
-		"status": status.Unsubscribed,
+		"status": Unsubscribed,
 	}
 	resp, err := c.do(
 		"PATCH",
@@ -49,14 +47,16 @@ func (c *Client) Unsubscribe(listID, email string) (*MemberResponse, error) {
 }
 
 // UpdateSubscription ...
-func (c *Client) UpdateSubscription(listID, email string, mergeFields map[string]interface{}) (*MemberResponse, error) {
+func (c *Client) UpdateSubscription(listID, email string, status Status, mergeFields map[string]interface{}) (*MemberResponse, error) {
 	// Hash email
 	emailMD5 := fmt.Sprintf("%x", md5.Sum([]byte(email)))
 	// Make request
 	params := map[string]interface{}{
 		"email_address": email,
-		"status":        status.Subscribed,
 		"merge_fields":  mergeFields,
+	}
+	if status != DontChange {
+		params["status"] = status
 	}
 	resp, err := c.do(
 		"PUT",

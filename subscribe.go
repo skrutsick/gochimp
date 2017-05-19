@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-
-	"github.com/vizzlo/gochimp/status"
 )
 
 // Subscribe ...
@@ -13,7 +11,7 @@ func (c *Client) Subscribe(listID string, email string, mergeFields map[string]i
 	// Make request
 	params := map[string]interface{}{
 		"email_address": email,
-		"status":        status.Subscribed,
+		"status":        Subscribed,
 		"merge_fields":  mergeFields,
 	}
 	resp, err := c.do(
