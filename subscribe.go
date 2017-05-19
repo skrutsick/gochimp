@@ -1,11 +1,11 @@
-package mailchimp
+package gochimp
 
 import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 
-	"github.com/dinosaurcop/go-mailchimp/status"
+	"github.com/vizzlo/gochimp/status"
 )
 
 // Subscribe ...

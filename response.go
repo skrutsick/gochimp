@@ -1,4 +1,4 @@
-package mailchimp
+package gochimp
 
 // MemberResponse - see https://api.mailchimp.com/schema/3.0/Lists/Members/Instance.json?_ga=1.216961300.323879299.1464708316
 type MemberResponse struct {

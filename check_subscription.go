@@ -1,4 +1,4 @@
-package mailchimp
+package gochimp
 
 import (
 	"crypto/md5"

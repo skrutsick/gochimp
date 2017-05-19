@@ -1,4 +1,4 @@
-package mailchimp
+package gochimp
 
 import (
 	"crypto/md5"
@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/dinosaurcop/go-mailchimp/status"
+	"github.com/vizzlo/gochimp/status"
 )
 
 func (c *Client) Unsubscribe(listID, email string) (*MemberResponse, error) {
